@@ -1,0 +1,32 @@
+<!-- The line below tells your system that this is an HTML file -->
+<!DOCTYPE html>
+<!-- Sets the language to English -->
+<html lang="en">
+    <!-- The head tag identifies some basic information about the page -->
+    <head>
+        <!-- This sets the title of the page – when you open it in a browser, the title is what will show up as the name of the tab -->
+        <title>Output</title>
+        <!-- Confirms UTF-8 characters being used -->
+        <meta charset="UTF-8">
+        <!-- Identifies the scaling of the page -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Specifies the associated CSS file being used -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styling.css') }}"/>
+    </head>
+    <!-- Signifies the start of the actual HTML page contents -->
+    <body>
+        <!-- A basic HTML div (container) -->
+        <div class="container">
+            <!-- A for loop that takes in output_list -->
+            {% for item in output_list %}
+                <!-- The individual element that will be created for each iteration -->
+                <h1>Welcome to UIUC, {{item}}!</h1>
+            {% endfor %}
+            <!-- A form is used for intiating routes, and the action specifies which route -->
+            <form method="post" action="{{ url_for('returner') }}">
+                <!-- Submission button that activates the form -->
+                <button type="submit">Return</button>
+            </form>
+        </div>
+    </body>
+</html>
